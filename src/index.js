@@ -1,1 +1,2 @@
-exports.Timer = require('./Timer.js');
+exports.methods = require('./methods.js');
+exports.Timer   = require('./Timer.js');

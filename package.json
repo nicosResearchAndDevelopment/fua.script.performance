@@ -4,10 +4,20 @@
   "description": "",
   "main": "src/index.js",
   "dependencies": {
-    "@nrd/fua.core.util": "1.0.0"
+    "@nrd/fua.core.util": "1.0.0",
+    "murmurhash": "^2.0.0"
+  },
+  "devDependencies": {
+    "expect": "^26.6.2",
+    "mocha": "^8.2.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
+  },
+  "mocha": {
+    "bail": false,
+    "recursive": false,
+    "spec": "src/*.test.js"
   },
   "repository": {
     "type": "git",
