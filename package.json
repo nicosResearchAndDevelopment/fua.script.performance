@@ -5,14 +5,16 @@
   "main": "src/index.js",
   "dependencies": {
     "@nrd/fua.core.util": "1.0.0",
-    "murmurhash": "^2.0.0"
+    "murmurhash": "^2.0.0",
+    "cli-progress": "^3.9.0"
   },
   "devDependencies": {
     "expect": "^26.6.2",
     "mocha": "^8.2.1"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "hashing-performance": "node tests/hashing-performance.js"
   },
   "mocha": {
     "bail": false,

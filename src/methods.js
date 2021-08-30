@@ -10,7 +10,7 @@ exports.prettyFormatNumber = function (value, precision = 3, unit = '', shift = 
         unit_list         = ['p', 'n', 'µ', 'm', '', 'k', 'M', 'G', 'T'],
         unit_factor       = 3 * Math.floor(Math.max(-4, Math.min(4, (magnitude - shift) / 3))),
         unit_prefix       = unit_list[4 + unit_factor / 3],
-        value_prefix      = (decimal_value === rounded_value ? '' : '~ '),
+        value_prefix      = (Math.abs(decimal_value - rounded_value) <= Number.EPSILON ? '' : '~ '),
         value_suffix      = (unit_prefix || unit ? ' ' + unit_prefix + unit : ''),
         value_formatted   = (rounded_value / 10 ** unit_factor)
             .toLocaleString(locale, {maximumSignificantDigits: precision + 1});

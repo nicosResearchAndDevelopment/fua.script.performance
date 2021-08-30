@@ -42,8 +42,8 @@ class Timer {
         return this._time;
     }
 
-    toString() {
-        return methods.prettyFormatNumber(this.sec, 4, 's', .5);
+    toString(locale = 'en') {
+        return methods.prettyFormatNumber(this.sec, 4, 's', .5, locale);
     }
 
 }
