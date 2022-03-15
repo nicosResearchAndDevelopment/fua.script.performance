@@ -41,5 +41,5 @@ randomMethodComparison.exec(5000, 2000).print();
 
 for (let type of comparisonTypes) {
     console.log('\n' + type + ':');
-    methodComparisons[type].reset().exec(1000, 1000).print();
+    methodComparisons[type].reset().exec(2000, 1000).print();
 }
