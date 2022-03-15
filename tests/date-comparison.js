@@ -1,43 +1,45 @@
 const
-    dateComparison   = require('../code/date-comparison.js'),
-    methods          = Object.keys(dateComparison),
-    {Test, Runtime}  = require('../src/index.js'),
-    comparisonTypes  = [
-        'Year',
-        // 'YearWeekISO',
-        'YearMonth',
-        'YearQuarter',
-        'YearHalf'
-    ],
-    dataGenerator    = () => {
-        let
-            date  = new Date(Math.floor(Math.random() * 3155756400000)),
-            type  = comparisonTypes[Math.floor(Math.random() * comparisonTypes.length)],
-            value = '';
-        switch (type) {
-            case 'Year':
-                value = (1970 + Math.floor(Math.random() * 100)).toString();
-                break;
-            case 'YearWeekISO':
-                value = (1 + Math.floor(Math.random() * 52)).toString();
-                break;
-            case 'YearMonth':
-                value = (1 + Math.floor(Math.random() * 12)).toString();
-                break;
-            case 'YearQuarter':
-                value = (1 + Math.floor(Math.random() * 4)).toString();
-                break;
-            case 'YearHalf':
-                value = (1 + Math.floor(Math.random() * 2)).toString();
-                break;
-        }
-        return {date, type, value};
+    dateComparison         = require('../code/date-comparison.js'),
+    methods                = Object.keys(dateComparison),
+    {Test, Runtime}        = require('../src/index.js'),
+    randomDate             = () => new Date(Math.floor(Math.random() * 3155756400000)),
+    randomValueGenerators  = {
+        Year:        () => (1970 + Math.floor(Math.random() * 100)).toString(),
+        YearWeekISO: () => (1 + Math.floor(Math.random() * 52)).toString(),
+        YearMonth:   () => (1 + Math.floor(Math.random() * 12)).toString(),
+        YearQuarter: () => (1 + Math.floor(Math.random() * 4)).toString(),
+        YearHalf:    () => (1 + Math.floor(Math.random() * 2)).toString()
     },
-    methodComparison = new Runtime(dataGenerator);
+    dataGenerators         = {
+        Year:        () => ({date: randomDate(), type: 'Year', value: randomValueGenerators.Year()}),
+        YearWeekISO: () => ({date: randomDate(), type: 'YearWeekISO', value: randomValueGenerators.YearWeekISO()}),
+        YearMonth:   () => ({date: randomDate(), type: 'YearMonth', value: randomValueGenerators.YearMonth()}),
+        YearQuarter: () => ({date: randomDate(), type: 'YearQuarter', value: randomValueGenerators.YearQuarter()}),
+        YearHalf:    () => ({date: randomDate(), type: 'YearHalf', value: randomValueGenerators.YearHalf()})
+    },
+    methodComparisons      = {
+        Year:        new Runtime(dataGenerators.Year),
+        YearWeekISO: new Runtime(dataGenerators.YearWeekISO),
+        YearMonth:   new Runtime(dataGenerators.YearMonth),
+        YearQuarter: new Runtime(dataGenerators.YearQuarter),
+        YearHalf:    new Runtime(dataGenerators.YearHalf)
+    },
+    comparisonTypes        = Object.keys(methodComparisons),
+    randomDataGenerator    = () => dataGenerators[comparisonTypes[Math.floor(Math.random() * comparisonTypes.length)]](),
+    randomMethodComparison = new Runtime(randomDataGenerator);
 
 for (let name of methods) {
     const test = new Test(name, dateComparison[name]);
-    methodComparison.register(test);
+    randomMethodComparison.register(test);
+    for (let type of comparisonTypes) {
+        methodComparisons[type].register(test);
+    }
 }
 
-methodComparison.exec(5000, 2000).print();
+console.log('\nRandom:');
+randomMethodComparison.exec(5000, 2000).print();
+
+for (let type of comparisonTypes) {
+    console.log('\n' + type + ':');
+    methodComparisons[type].reset().exec(1000, 1000).print();
+}
