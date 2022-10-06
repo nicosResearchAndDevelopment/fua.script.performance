@@ -14,6 +14,13 @@ exports.branched_specific = function (max) {
     }
 } // branched_specific
 
+exports.conditional_operator = function(max) {
+    let tmp = true;
+    for (let i = 0; i < max; i++) {
+        tmp = tmp ? false : true;
+    }
+}
+
 exports.branchless = function (max) {
     let tmp = true;
     for (let i = 0; i < max; i++) {
