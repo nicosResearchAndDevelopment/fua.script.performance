@@ -26,7 +26,7 @@ interface Test {
 
 /** @template T */
 interface Runtime {
-    constructor(generator: (value: undefined, index: number) => T): this
+    constructor(generator?: (value: undefined, index: number) => T): this
     reset(): this
     register(test: Test<T>): this
     exec(repetitions: number, length: number): this

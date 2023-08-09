@@ -9,9 +9,9 @@ const
 class Runtime {
 
     /**
-     * @param {function(value: undefined, index: number): T} generator
+     * @param {function(value: undefined, index: number): T} [generator]
      */
-    constructor(generator) {
+    constructor(generator = () => null) {
         assert.function(generator);
         const progress = new cliProgress.SingleBar({
             stream:          process.stdout,
