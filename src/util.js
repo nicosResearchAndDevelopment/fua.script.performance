@@ -1,5 +1,13 @@
 const util = exports;
 
+/**
+ * @param {number} value
+ * @param {number} [precision=3]
+ * @param {string} [unit='']
+ * @param {number} [shift=0]
+ * @param {string} [locale='en']
+ * @returns {string}
+ */
 util.prettyFormatNumber = function (value, precision = 3, unit = '', shift = 0, locale = 'en') {
     const
         decimal_value     = Number(value),

@@ -1,33 +1,32 @@
 const
-    cliProgress = require('cli-progress');
+    assert    = require('@nrd/fua.core.assert'),
+    AsyncTest = require('./AsyncTest.js'),
+    Runtime   = require('./Runtime.js');
 
-class Runtime {
+/**
+ * @template T
+ * @extends {Runtime<T>}
+ */
+class AsyncRuntime extends Runtime {
 
-    constructor(generator) {
-        const progress = new cliProgress.SingleBar({
-            stream:          process.stdout,
-            clearOnComplete: true,
-            etaBuffer:       100
-        }, cliProgress.Presets.rect);
-        Object.defineProperties(this, {
-            _tests:     {value: [], enumerable: false, configurable: false, writable: false},
-            _generator: {value: generator, enumerable: false, configurable: false, writable: false},
-            _progress:  {value: progress, enumerable: false, configurable: false, writable: false}
-        });
-    }
-
-    reset() {
-        for (let test of this._tests) {
-            test.reset();
-        }
+    /**
+     * @param {AsyncTest<T>} test
+     * @returns {this}
+     */
+    register(test) {
+        assert.instance(test, AsyncTest);
+        this._tests.push(test);
         return this;
     }
 
-    register(test) {
-        this._tests.push(test);
-    }
-
+    /**
+     * @param {number} [repetitions=1]
+     * @param {number} [length=1]
+     * @returns {Promise<this>}
+     */
     async exec(repetitions = 1, length = 1) {
+        assert.number.integer(repetitions, 1);
+        assert.number.integer(length, 1);
         const dataArr = await Promise.all(Array.from({length}, this._generator));
         this._progress.start(repetitions * this._tests.length, 0);
         for (let k = 0; k < repetitions; k++) {
@@ -41,11 +40,6 @@ class Runtime {
         return this;
     }
 
-    print() {
-        const testArr = this._tests.map(val => val).sort((a, b) => a.time - b.time);
-        console.table(testArr.map(test => test.result()));
-    }
-
 }
 
-module.exports = Runtime;
+module.exports = AsyncRuntime;

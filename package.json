@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "dependencies": {
-    "@nrd/fua.core.util": "1.0.0",
+    "@nrd/fua.core.assert": "^1.0.0",
     "murmurhash": "^2.0.0",
     "cli-progress": "^3.9.0"
   },

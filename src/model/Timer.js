@@ -1,5 +1,6 @@
 const
-    util = require('../util.js');
+    assert = require('@nrd/fua.core.assert'),
+    util   = require('../util.js');
 
 class Timer {
 
@@ -30,19 +31,33 @@ class Timer {
         return this;
     }
 
+    /**
+     * @returns {number}
+     */
     get sec() {
         return 1e-9 * this._time;
     }
 
+    /**
+     * @returns {number}
+     */
     get msec() {
         return 1e-6 * this._time;
     }
 
+    /**
+     * @returns {number}
+     */
     get nsec() {
         return this._time;
     }
 
+    /**
+     * @param {string} [locale='en']
+     * @returns {string}
+     */
     toString(locale = 'en') {
+        assert.string(locale);
         return util.prettyFormatNumber(this.sec, 4, 's', .5, locale);
     }
 
