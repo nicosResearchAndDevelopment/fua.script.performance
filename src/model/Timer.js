@@ -1,5 +1,5 @@
 const
-    methods = require('./methods.js');
+    util = require('../util.js');
 
 class Timer {
 
@@ -43,7 +43,7 @@ class Timer {
     }
 
     toString(locale = 'en') {
-        return methods.prettyFormatNumber(this.sec, 4, 's', .5, locale);
+        return util.prettyFormatNumber(this.sec, 4, 's', .5, locale);
     }
 
 }

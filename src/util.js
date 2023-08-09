@@ -1,4 +1,6 @@
-exports.prettyFormatNumber = function (value, precision = 3, unit = '', shift = 0, locale = 'en') {
+const util = exports;
+
+util.prettyFormatNumber = function (value, precision = 3, unit = '', shift = 0, locale = 'en') {
     const
         decimal_value     = Number(value),
         log_magnitude     = Math.log10(decimal_value),
@@ -18,3 +20,5 @@ exports.prettyFormatNumber = function (value, precision = 3, unit = '', shift = 
     return value_prefix + value_formatted + value_suffix;
 
 };
+
+Object.freeze(util);

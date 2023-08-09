@@ -1,6 +1,6 @@
 const
-    methods = require('./methods.js'),
-    Timer   = require('./Timer.js');
+    util  = require('../util.js'),
+    Timer = require('./Timer.js');
 
 class Test {
 
@@ -41,8 +41,8 @@ class Test {
         return {
             test:    this._name,
             runs:    this._runs.toLocaleString(locale),
-            time:    methods.prettyFormatNumber(this._timer.sec, 3, 's', 0, locale),
-            average: methods.prettyFormatNumber(this._runs > 0 ? this._timer.sec / this._runs : 0, 3, 's', 0, locale)
+            time:    util.prettyFormatNumber(this._timer.sec, 3, 's', 0, locale),
+            average: util.prettyFormatNumber(this._runs > 0 ? this._timer.sec / this._runs : 0, 3, 's', 0, locale)
         };
     }
 

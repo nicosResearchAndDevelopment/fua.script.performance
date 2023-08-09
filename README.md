@@ -1,2 +1,1 @@
-# Performance Tests
-
+# @nrd/fua.script.performance

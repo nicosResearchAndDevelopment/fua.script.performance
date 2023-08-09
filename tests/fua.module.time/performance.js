@@ -1,10 +1,8 @@
 const
-    path              = require('path'),
-    util              = require('@nrd/fua.core.util'),
-    {Test, Runtime}   = require('../src/index.js'),
-    time              = require(path.join(util.FUA_JS_LIB, 'module.time/src/module.time.js')),
-    timeline          = require(path.join(util.FUA_JS_LIB, 'module.time/src/module.time.Year.js')),
-    timeline_devl     = require(path.join(util.FUA_JS_LIB, 'module.time/src/module.time.timeline.DEVL.js')),
+    {Test, Runtime}   = require('../../src/model.js'),
+    time              = require('../../../../module/time/src/module.time.js'),
+    timeline          = require('../../../../module/time/src/module.time.Year.js'),
+    timeline_devl     = require('../../../../module/time/src/module.time.timeline.DEVL.js'),
     dataGenerators    = {
         Year:  () => [
             1970 + Math.floor(Math.random() * 100)

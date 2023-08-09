@@ -1,7 +1,7 @@
 const
-    dateComparison         = require('../code/date-comparison.js'),
-    methods                = Object.keys(dateComparison),
-    {Test, Runtime}        = require('../src/index.js'),
+    methods                = require('./methods.js'),
+    methodNames            = Object.keys(methods),
+    {Test, Runtime}        = require('../../src/model.js'),
     randomDate             = () => new Date(Math.floor(Math.random() * 3155756400000)),
     randomValueGenerators  = {
         Year:        () => (1970 + Math.floor(Math.random() * 100)).toString(),
@@ -28,8 +28,8 @@ const
     randomDataGenerator    = () => dataGenerators[comparisonTypes[Math.floor(Math.random() * comparisonTypes.length)]](),
     randomMethodComparison = new Runtime(randomDataGenerator);
 
-for (let name of methods) {
-    const test = new Test(name, dateComparison[name]);
+for (let name of methodNames) {
+    const test = new Test(name, methods[name]);
     randomMethodComparison.register(test);
     for (let type of comparisonTypes) {
         methodComparisons[type].register(test);

@@ -1,5 +1,5 @@
 const
-    dateComparison        = require('../code/date-comparison.js'),
+    dateComparison        = require('./methods.js'),
     randomDate            = () => new Date(Math.floor(Math.random() * 3155756400000)),
     randomValueGenerators = {
         Year:        () => (1970 + Math.floor(Math.random() * 100)).toString(),
