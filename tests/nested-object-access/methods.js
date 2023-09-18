@@ -41,3 +41,8 @@ exports.accessNestedObject = function ([first, second, third, fourth, fifth]) {
     const combined = first + second + third + fourth + fifth;
     return nestedObject[first][second][third][fourth][fifth] === combined;
 };
+
+exports.noObjectAccess = function ([first, second, third, fourth, fifth]) {
+    const combined = first + second + third + fourth + fifth;
+    return combined === combined;
+};

@@ -17,4 +17,4 @@ for (let name of methodNames) {
     methodComparison.register(test);
 }
 
-methodComparison.exec(testRepetitions, sampleSize).print();
+setTimeout(() => methodComparison.exec(testRepetitions, sampleSize).print(), 200);
