@@ -16,7 +16,9 @@ class Runtime {
         const progress = new cliProgress.SingleBar({
             stream:          process.stdout,
             clearOnComplete: true,
-            etaBuffer:       100
+            etaBuffer:       100,
+            hideCursor:      true,
+            linewrap:        true
         }, cliProgress.Presets.rect);
         Object.defineProperties(this, {
             _tests:     {value: [], enumerable: false, configurable: false, writable: false},
