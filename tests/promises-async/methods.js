@@ -1,3 +1,10 @@
+exports.flat_sync = function (count = 0) {
+    count++;
+    count++;
+    count++;
+    return count;
+};
+
 function increment(count) {
     return new Promise(
         resolve => process.nextTick(resolve, count + 1)
