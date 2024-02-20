@@ -2,8 +2,7 @@ const
     http                  = require('http'),
     node_fetch            = require('node-fetch'),
     {fetch: undici_fetch} = require('undici'),
-    HTTP                  = require('@nrd/fua.client.http'),
-    client                = HTTP();
+    HTTP                  = require('@nrd/fua.client.http');
 
 Object.defineProperties(exports, {
     port:  {
@@ -48,6 +47,5 @@ exports['undici-fetch'] = async function (param) {
 };
 
 exports['client-fetch'] = async function (param) {
-    const response = await client.fetch(param.url, param);
-    return await response.text();
+    return await HTTP.fetch(param.url, param).text();
 };
