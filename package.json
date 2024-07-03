@@ -5,7 +5,8 @@
   "dependencies": {
     "@nrd/fua.core.assert": "^1.0.0",
     "murmurhash": "^2.0.0",
-    "cli-progress": "^3.9.0"
+    "cli-progress": "^3.9.0",
+    "uuid": "^10.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
