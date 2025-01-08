@@ -1,7 +1,7 @@
 const
     methods = exports,
-    hrt     = require('@nrd/fua.core.hrt'),
-    ts      = require('@nrd/fua.core.ts');
+    hrt     = require('@fua/core.hrt'),
+    ts      = require('@fua/core.ts');
 
 methods['static'] = function () {
     return 1337;

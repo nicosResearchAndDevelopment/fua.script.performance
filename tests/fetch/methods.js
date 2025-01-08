@@ -2,7 +2,7 @@ const
     http                  = require('http'),
     node_fetch            = require('node-fetch'),
     {fetch: undici_fetch} = require('undici'),
-    HTTP                  = require('@nrd/fua.client.http');
+    HTTP                  = require('@fua/client.http');
 
 Object.defineProperties(exports, {
     port:  {

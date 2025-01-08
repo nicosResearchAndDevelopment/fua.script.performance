@@ -1,5 +1,5 @@
 const
-    assert    = require('@nrd/fua.core.assert'),
+    assert    = require('@fua/core.assert'),
     AsyncTest = require('./AsyncTest.js'),
     Runtime   = require('./Runtime.js');
 

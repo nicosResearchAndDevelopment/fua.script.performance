@@ -2,7 +2,7 @@ const
     methods                   = require('./methods.js'),
     methodNames               = Object.keys(methods),
     {AsyncTest, AsyncRuntime} = require('../../src/model.js'),
-    uuid                      = require('@nrd/fua.core.uuid'),
+    uuid                      = require('@fua/core.uuid'),
     dataGenerator             = () => ({
         url:         `http://localhost:${methods.port}/${uuid.v4()}/`,
         method:      'GET',

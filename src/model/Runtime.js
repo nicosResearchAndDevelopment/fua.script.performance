@@ -1,5 +1,5 @@
 const
-    assert      = require('@nrd/fua.core.assert'),
+    assert      = require('@fua/core.assert'),
     cliProgress = require('cli-progress'),
     Test        = require('./Test.js'),
     SGR         = (value) => `\x1b[${value}m`,

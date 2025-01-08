@@ -1,4 +1,4 @@
-# @nrd/fua.script.performance
+# @fua/script.performance
 
 ## Interface
 

@@ -1,9 +1,9 @@
 {
-  "name": "@nrd/fua.script.performance",
-  "version": "1.0.0",
+  "name": "@fua/script.performance",
+  "version": "0.0.0-dev",
   "description": "",
   "dependencies": {
-    "@nrd/fua.core.assert": "^1.0.0",
+    "@fua/core.assert": "^1.0.0",
     "murmurhash": "^2.0.0",
     "cli-progress": "^3.9.0",
     "uuid": "^10.0.0"
@@ -18,8 +18,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "ssh://git@git02.int.nsc.ag:10022/research/fua/script/performance.git"
+    "url": "ssh://git@github.com:nicosResearchAndDevelopment/fua.script.performance.git"
   },
-  "author": "spetrac@nicos-ag.com",
-  "license": "UNLICENSED"
+  "author": "Simon Petrac <pfoerdie@gmail.com>",
+  "license": "MIT"
 }
